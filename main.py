@@ -1,7 +1,7 @@
 # Importing required modules
 
 import streamlit as st
-# import streamlit_folium # import folium_static
+from streamlit_folium import folium_static
 import folium as f,folium
 import osmnx as ox
 import networkx as nx
