@@ -33,7 +33,7 @@ st.header('Using Python OSMNX and Folium Library')
 st.write(' ')
 
 # First Selectbox to select the input method by the users
-input_method = st.sidebar.selectbox("Select the Input method",("Coordinates", " Place Name"))
+input_method = st.sidebar.selectbox("Select the Input method",("Place Name", "Coordinates"))
 
 # Second Selectbox to select the network type of the graph by the users
 network_value = st.sidebar.selectbox("Select the Network type",("Walk","Drive","Bike","All"))
@@ -65,8 +65,111 @@ input3 = 0.0000   # destination's lattitude
 input4 = 0.0000   # destination's longitude
 
 
-# if the user selected the input_method as Place Name
-if input_method=='Place Name':
+# if the user selected the input_method as coordinates
+if input_method=='Coordinates':
+
+    # Display text
+    st.write("""
+    Enter the coordinate of the Source
+    """)
+
+    # Activated two columns for input of lattitude and longitude of source
+    col1, col2 = st.beta_columns(2)
+    with col1:
+        input1 = st.number_input('Source Lattitude Coordinates')
+    with col2:
+        input2 = st.number_input('Source Longitude Coordinates')
+
+    # Display the stored values of input by the user to double-check the given inputs
+    st.write("Lattitude:",input1,"Longitude:", input2)
+
+    # Display text
+    st.write("""
+    Enter the coordinate of the Destination
+    """)
+
+    # Activated two columns for input of lattitude and longitude of destination
+    col1, col2 = st.beta_columns(2)
+    with col1:
+        input3 = st.number_input('Destination Lattitude Coordinates')
+    with col2:
+        input4 = st.number_input('Destination Longitude Coordinates')
+
+    # Display the stored values of input by the user to double-check the given inputs
+    st.write("Lattitude:",input3,"Longitude:", input4)
+
+    # A Radio button with three options to select the map_type by the user 
+    map_type = st.radio(
+    'Select map type',
+    ['OpenStreetMap', 'CartodbPositron','StamenTerrain']
+    )
+
+    # Slider to select the distance range between source and destination by the user ( in Kms )
+    range = st.select_slider('Select distance range ( in Km )', options=[10,'20','30','40','50','60','70','80','90','100'])
+
+    # Converting the selection of the user in integer from string, and changing it into metres
+    range_value=int(range)
+    range_value*=1000
+
+    # Display the input in metres to double-check the given inputs
+    st.write("Distance range in metres:",range_value)
+
+    # When the button is clicked, it will return a true boolean value 
+    # which makes the inside code of if statement to execute
+    if st.button('Show me the Way'):
+
+        # try and except blocks to handle the errors during the process of generation of maps with shortest routes
+        try:
+            # Configure OSMnx by setting the default global settings’ values
+            ox.config(use_cache=True, log_console=True)
+
+            # Creating a graph from OSMNX within some distance of source point
+            G = ox.graph_from_point((input1, input2),dist=range_value,network_type=network_value,simplify=False)
+            
+            # adding edge speeds for all the nodes present in the graph G
+            G = ox.speed.add_edge_speeds(G)
+
+            # adding edge travel times for all the nodes present in the graph G
+            G = ox.speed.add_edge_travel_times(G)
+
+            # getting the nearest node from the source coordinates in the graph G generated above
+            orig = ox.get_nearest_node(G, (input1, input2))
+
+            # getting the nearest node from the destination coordinates in the graph G generated above
+            dest = ox.get_nearest_node(G, (input3, input4))
+
+            # shortest_path() function generates the shortest path between the orgin and source
+            # and store the path in a 'route' named variable according to the algorithm
+            # selected by the user and all computations are based on travel time
+            route = nx.shortest_path(G, orig, dest, 'travel_time',method=algo_value)
+
+            # Plotting the route on the folium map named 'route_map'
+            route_map = ox.plot_route_folium(G, route,tiles=map_type)
+
+            # Putting a blue folium Marker on the source coordinates with proper tooltip
+            tooltip1 = "Source"
+            folium.Marker(
+            [input1, input2], popup="Source", tooltip=tooltip1,icon=folium.Icon(color='blue')).add_to(route_map)
+
+            # Putting a red folium Marker on the destination coordinates with proper tooltip
+            tooltip2 = "Destination"
+            folium.Marker(
+            [input3, input4], popup="Destination", tooltip=tooltip2,icon=folium.Icon(color='red')).add_to(route_map)
+
+            # Displaying the final map with shortest_path plotted and markers placed on the correct locations
+            folium_static(route_map)
+        
+        # if some error occurs during the generation of maps, then this except block will execute
+        except:
+
+            # Displaying the error message with some suggestions
+            st.image('./error.png')
+            st.error('Sorry ! No Graph exists for the given inputs.')
+            st.text("Please try again with some other input values.")
+            
+        
+# if the user selected the input_method as Place name
+else:
 
     # Display text
     st.write("""
@@ -215,112 +318,6 @@ if input_method=='Place Name':
             1) API Key is invalid or not active.\n 
             2) Input is invalid.
             """)
-
-    
-        
-# if the user selected the input_method as Coordinates
-else:
-
-    # Display text
-    st.write("""
-    Enter the coordinate of the Source
-    """)
-
-    # Activated two columns for input of lattitude and longitude of source
-    col1, col2 = st.beta_columns(2)
-    with col1:
-        input1 = st.number_input('Source Lattitude Coordinates')
-    with col2:
-        input2 = st.number_input('Source Longitude Coordinates')
-
-    # Display the stored values of input by the user to double-check the given inputs
-    st.write("Lattitude:",input1,"Longitude:", input2)
-
-    # Display text
-    st.write("""
-    Enter the coordinate of the Destination
-    """)
-
-    # Activated two columns for input of lattitude and longitude of destination
-    col1, col2 = st.beta_columns(2)
-    with col1:
-        input3 = st.number_input('Destination Lattitude Coordinates')
-    with col2:
-        input4 = st.number_input('Destination Longitude Coordinates')
-
-    # Display the stored values of input by the user to double-check the given inputs
-    st.write("Lattitude:",input3,"Longitude:", input4)
-
-    # A Radio button with three options to select the map_type by the user 
-    map_type = st.radio(
-    'Select map type',
-    ['OpenStreetMap', 'CartodbPositron','StamenTerrain']
-    )
-
-    # Slider to select the distance range between source and destination by the user ( in Kms )
-    range = st.select_slider('Select distance range ( in Km )', options=[10,'20','30','40','50','60','70','80','90','100'])
-
-    # Converting the selection of the user in integer from string, and changing it into metres
-    range_value=int(range)
-    range_value*=1000
-
-    # Display the input in metres to double-check the given inputs
-    st.write("Distance range in metres:",range_value)
-
-    # When the button is clicked, it will return a true boolean value 
-    # which makes the inside code of if statement to execute
-    if st.button('Show me the Way'):
-
-        # try and except blocks to handle the errors during the process of generation of maps with shortest routes
-        try:
-            # Configure OSMnx by setting the default global settings’ values
-            ox.config(use_cache=True, log_console=True)
-
-            # Creating a graph from OSMNX within some distance of source point
-            G = ox.graph_from_point((input1, input2),dist=range_value,network_type=network_value,simplify=False)
-            
-            # adding edge speeds for all the nodes present in the graph G
-            G = ox.speed.add_edge_speeds(G)
-
-            # adding edge travel times for all the nodes present in the graph G
-            G = ox.speed.add_edge_travel_times(G)
-
-            # getting the nearest node from the source coordinates in the graph G generated above
-            orig = ox.get_nearest_node(G, (input1, input2))
-
-            # getting the nearest node from the destination coordinates in the graph G generated above
-            dest = ox.get_nearest_node(G, (input3, input4))
-
-            # shortest_path() function generates the shortest path between the orgin and source
-            # and store the path in a 'route' named variable according to the algorithm
-            # selected by the user and all computations are based on travel time
-            route = nx.shortest_path(G, orig, dest, 'travel_time',method=algo_value)
-
-            # Plotting the route on the folium map named 'route_map'
-            route_map = ox.plot_route_folium(G, route,tiles=map_type)
-
-            # Putting a blue folium Marker on the source coordinates with proper tooltip
-            tooltip1 = "Source"
-            folium.Marker(
-            [input1, input2], popup="Source", tooltip=tooltip1,icon=folium.Icon(color='blue')).add_to(route_map)
-
-            # Putting a red folium Marker on the destination coordinates with proper tooltip
-            tooltip2 = "Destination"
-            folium.Marker(
-            [input3, input4], popup="Destination", tooltip=tooltip2,icon=folium.Icon(color='red')).add_to(route_map)
-
-            # Displaying the final map with shortest_path plotted and markers placed on the correct locations
-            folium_static(route_map)
-        
-        # if some error occurs during the generation of maps, then this except block will execute
-        except:
-
-            # Displaying the error message with some suggestions
-            st.image('./error.png')
-            st.error('Sorry ! No Graph exists for the given inputs.')
-            st.text("Please try again with some other input values.")
-            
-    
 
 
 
