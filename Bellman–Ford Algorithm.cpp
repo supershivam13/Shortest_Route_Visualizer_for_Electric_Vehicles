@@ -40,6 +40,8 @@
     // A C++ program for Bellman-Ford's single source
     // shortest path algorithm.
     #include <bits/stdc++.h>
+    #include <stdio.h>
+    #include <stdlib.h>
 
 
     // a structure to represent a weighted edge in graph
