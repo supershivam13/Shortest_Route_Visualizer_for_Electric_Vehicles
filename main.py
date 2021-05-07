@@ -33,7 +33,7 @@ st.header('Using Python OSMNX and Folium Library')
 st.write(' ')
 
 # First Selectbox to select the input method by the users
-input_method = st.sidebar.selectbox("Select the Input method",("Coordinates", " Place Name"))
+input_method = st.sidebar.selectbox("Select the Input method",("Place Name", "Coordinates"))
 
 # Second Selectbox to select the network type of the graph by the users
 network_value = st.sidebar.selectbox("Select the Network type",("Walk","Drive","Bike","All"))
