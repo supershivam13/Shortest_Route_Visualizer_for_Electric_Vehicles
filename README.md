@@ -10,10 +10,10 @@ Project Live Demo : https://bit.ly/3vTSaLD
 
 - Clone(fork) this repository
 - Run these following commands on your terminal/ cmd prompt:
-  - cd travel-guide
-  - npm install
-  - npm run start
-  - enter [http://localhost:3000] in your browser
+  - cd Shortest_Route_Visualizer_for_Electric_Vehicles
+  - pip install streamlit
+  - pip install scikit-learn
+  - streamlit run main.py
 
 
 
