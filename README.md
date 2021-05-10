@@ -22,8 +22,10 @@ offered as a way in which drivers can reduce fuel consumption and
 consequently reduce the carbon footprint of their journeys
 Similarly, some more cases are there and exist in the real world nature of the
 roads and networks.
+
+<h4>
 This project is designed on the generation of shortest routes between
-two points based on the travel time
+two points based on the travel time. </h4>
 
 <h3> Key Features </h3>
 
