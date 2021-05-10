@@ -14,6 +14,7 @@ Project Live Demo : https://bit.ly/3vTSaLD
   - pip install streamlit
   - pip install scikit-learn
   - streamlit run main.py
+- Wait for few seconds, it will start running on your localhost
 
 
 
