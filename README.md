@@ -4,10 +4,26 @@ Project Live Demo : https://bit.ly/3vTSaLD
 
 ## 📌 Introduction
 
-A Streamlit web-application which deals with the construction and plotting of shortest-routes
+<h4> A Streamlit web-application which deals with the construction and plotting of shortest-routes
 for Electric vehicles (EVs) based on different aspects of the nature of
 roads such as walk,drive,bike,etc which is basically the network type of
-the graph used for finding shortest paths between two points.
+the graph used for finding shortest paths between two points. </h4>
+
+The term ‘shortest’ may have different meanings to different individuals.
+For example: For a person A, he may consider the route which makes him
+reach the destination in at least time as the shortest-path based on
+travel-time. At the same time,for person B, there may exist a way or path by
+which he may take a bit more time but he reaches the destination with the
+least consumption of fuels. So, Person B can call that route the shortest-path
+based on fuel consumption. The second is an example of Eco-routing.
+Broadly speaking, Eco-routing is the identification of the most
+energy-efficient route for a vehicle to travel between two points and is
+offered as a way in which drivers can reduce fuel consumption and
+consequently reduce the carbon footprint of their journeys
+Similarly, some more cases are there and exist in the real world nature of the
+roads and networks.
+This project is designed on the generation of shortest routes between
+two points based on the travel time
 
 <h3> Key Features </h3>
 
