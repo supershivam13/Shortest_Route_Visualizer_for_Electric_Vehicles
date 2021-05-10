@@ -18,6 +18,6 @@ For major changes, you are welcome to open an issue to discuss what you would li
 <p align = "center">
   
 <a href="#"><img src="http://ForTheBadge.com/images/badges/built-by-developers.svg" alt="built by developers"></a>
-[![built with love](https://forthebadge.com/images/badges/built-with-love.svg)]
+[![built with love]](https://forthebadge.com/images/badges/built-with-love.svg)]
 
 </p>
