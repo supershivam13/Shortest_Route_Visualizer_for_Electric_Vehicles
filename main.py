@@ -1,5 +1,6 @@
 # Importing required modules
 
+
 import streamlit as st
 from streamlit_folium import folium_static
 import folium as f,folium
@@ -9,6 +10,10 @@ import geopy
 import geopandas
 import requests
 import json
+import geopandas as gpd
+import numpy as np
+import matplotlib.pyplot as plt
+
 # import os
 # import base64
 # import taxicab as tc
@@ -104,6 +109,10 @@ if input_method=='Coordinates':
     ['OpenStreetMap', 'CartodbPositron','StamenTerrain']
     )
 
+    # Slider to take the value of k from the user to plot k shortest routes
+    k = st.select_slider('Select number of shortest paths', options=[1,'2','3','4','5'])
+    k_paths=int(k)
+
     # Slider to select the distance range between source and destination by the user ( in Kms )
     range = st.select_slider('Select distance range ( in Km )', options=[10,'20','30','40','50','60','70','80','90','100'])
 
@@ -137,14 +146,23 @@ if input_method=='Coordinates':
 
             # getting the nearest node from the destination coordinates in the graph G generated above
             dest = ox.get_nearest_node(G, (input3, input4))
+            
 
             # shortest_path() function generates the shortest path between the orgin and source
             # and store the path in a 'route' named variable according to the algorithm
             # selected by the user and all computations are based on travel time
             route = nx.shortest_path(G, orig, dest, 'travel_time',method=algo_value)
+            
+            # Plotting the shortest route on the folium map named 'route_map' and coloring it red
+            route_map = ox.plot_route_folium(G, route,route_color='red',tiles=map_type,weight=5)
 
-            # Plotting the route on the folium map named 'route_map'
-            route_map = ox.plot_route_folium(G, route,tiles=map_type)
+            # Now, generating k number of shortest_path
+            routes = ox.k_shortest_paths(G, orig, dest, k=k_paths, weight='length')
+                
+            # Plotting the other shortest_routes other than the main shortest route
+            for x in routes:
+                if (x!=route):
+                    route_map = ox.plot_route_folium(G, x,route_map=route_map,tiles=map_type,weight=2)
 
             # Putting a blue folium Marker on the source coordinates with proper tooltip
             tooltip1 = "Source"
@@ -158,6 +176,7 @@ if input_method=='Coordinates':
 
             # Displaying the final map with shortest_path plotted and markers placed on the correct locations
             folium_static(route_map)
+            st.write("The shortest among all k paths is indicated by red color.")
         
         # if some error occurs during the generation of maps, then this except block will execute
         except:
@@ -201,6 +220,10 @@ else:
     'Select map type',
     ['OpenStreetMap', 'CartodbPositron','StamenTerrain']
     )
+
+    # Slider to take the value of k from the user to plot k shortest routes
+    k = st.select_slider('Select number of shortest paths', options=[1,'2','3','4','5'])
+    k_paths=int(k)
 
     # Slider to select the distance range between source and destination by the user ( in Kms )
     range = st.select_slider('Select distance range ( in Km )', options=[10,'20','30','40','50','60','70','80','90','100'])
@@ -266,6 +289,7 @@ else:
 
                 # Creating a graph from OSMNX within some distance of source point
                 G = ox.graph_from_point((input1, input2),dist=range_value,network_type=network_value,simplify=False)
+                # ox.plot_graph(G,node_color='r')
 
                 # # adding edge speeds for all the nodes present in the graph G
                 G = ox.speed.add_edge_speeds(G)
@@ -284,8 +308,16 @@ else:
                 # selected by the user and all computations are based on travel time
                 route = nx.shortest_path(G, orig, dest, 'travel_time',method=algo_value)
 
-                # Plotting the route on the folium map named 'route_map'
-                route_map = ox.plot_route_folium(G, route,tiles=map_type)
+                # Plotting the shortest route on the folium map named 'route_map' and coloring it red
+                route_map = ox.plot_route_folium(G, route,route_color='red',tiles=map_type,weight=5)
+
+                # Now, generating k number of shortest_path
+                routes = ox.k_shortest_paths(G, orig, dest, k=k_paths, weight='length')
+                
+                # Plotting the other shortest_routes other than the main shortest route
+                for x in routes:
+                    if (x!=route):
+                        route_map = ox.plot_route_folium(G, x,route_map=route_map,tiles=map_type,weight=2)
 
                 # Putting a blue folium Marker on the source coordinates with proper tooltip
                 tooltip1 = "Source"
@@ -299,8 +331,9 @@ else:
 
                 # Displaying the final map with shortest_path plotted and markers placed on the correct locations
                 folium_static(route_map)
+                st.write("The shortest among all k paths is indicated by red color.")
 
-             # if some error occurs during the generation of maps, then this except block will execute 
+            # if some error occurs during the generation of maps, then this except block will execute 
             except:
                 
                 # Displaying the error message with some suggestions
