@@ -59,7 +59,14 @@ two points based on the travel time. </h4>
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
+* Run the app - Steps are mentioned above.
+* If you face issues in any step open a new issue.
+* To fix issues: Fork this repository, make your changes and make a Pull Request. 
 
+## ✉️ Imortant Message
+
+* Still there are some features to complete as well as to implement, If you find this app intresting than hit me up; I will be
+glad to work with you.
 
 ## ⭐ Issues:
 For major changes, you are welcome to open an issue to discuss what you would like to change. Enhancements will be appreciated.
