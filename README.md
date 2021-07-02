@@ -57,10 +57,18 @@ two points based on the travel time. </h4>
 ## ⭐ Issues:
 For major changes, you are welcome to open an issue to discuss what you would like to change. Enhancements will be appreciated.
 
+
+
 <p align = "center">
   
 <a href="#"><img src="http://ForTheBadge.com/images/badges/built-by-developers.svg" alt="built by developers"></a>
 [![built with love](https://forthebadge.com/images/badges/built-with-love.svg)]
 
+</p>
+
+**Drop a star ⭐ if you find this project interesting!**
+
+<p align="center" width="100%">
+   Made with ❤️ in 🇮🇳 By Gokul Nair   
 </p>
 
