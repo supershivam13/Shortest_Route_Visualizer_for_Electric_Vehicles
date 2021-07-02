@@ -46,6 +46,11 @@ two points based on the travel time. </h4>
   - streamlit run main.py
 - Wait for few seconds, it will start running on your localhost
 
+## Snapshots of App 📸
+
+https://github.com/supershivam13/Shortest_Route_Visualizer_for_Electric_Vehicles/blob/main/assets/Snapshot%201.jpeg
+
+
 ## 📒 Libraries Used In Project
 
 * OSMNX <br>
