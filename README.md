@@ -27,7 +27,7 @@ roads and networks.
 This project is designed on the generation of shortest routes between
 two points based on the travel time. </h4>
 
-<h3> Key Features </h3>
+<h3>❤️ Key Features </h3>
 
 - Integrated Google Geocoding API from Google Cloud Console to fetch the geo-spatial coordinates of the locations.
 - Implemented features like selection of network type, algorithm type to use, map types to display, etc
