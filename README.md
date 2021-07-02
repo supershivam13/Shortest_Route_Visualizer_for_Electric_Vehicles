@@ -46,6 +46,13 @@ two points based on the travel time. </h4>
   - streamlit run main.py
 - Wait for few seconds, it will start running on your localhost
 
+# Libraries Used In Project 📒 
+
+* OSMNX <br>
+* Folium
+* Numpy
+* Json
+
 
 
 ## 💥 How to Contribute?
