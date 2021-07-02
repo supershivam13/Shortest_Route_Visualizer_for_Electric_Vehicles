@@ -36,7 +36,7 @@ two points based on the travel time. </h4>
 
 
 
-## To run this project
+## 📲 To run this project
 
 - Clone(fork) this repository
 - Run these following commands on your terminal/ cmd prompt:
