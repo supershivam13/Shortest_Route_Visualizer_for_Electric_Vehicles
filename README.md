@@ -48,7 +48,7 @@ two points based on the travel time. </h4>
 
 ## Snapshots of App 📸
 
-https://github.com/supershivam13/Shortest_Route_Visualizer_for_Electric_Vehicles/blob/main/assets/Snapshot%201.jpeg
+![Untited design-4](https://github.com/supershivam13/Shortest_Route_Visualizer_for_Electric_Vehicles/blob/main/assets/Snapshot%201.jpeg)
 
 
 ## 📒 Libraries Used In Project
