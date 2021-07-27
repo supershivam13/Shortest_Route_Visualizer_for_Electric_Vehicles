@@ -71,6 +71,9 @@ input3 = 0.0000   # destination's lattitude
 input4 = 0.0000   # destination's longitude
 
 
+colors = ['green','purple','orange','yellow']
+
+
 # if the user selected the input_method as coordinates
 if input_method=='Coordinates':
 
@@ -316,9 +319,11 @@ elif input_method=='Place Name':
                 routes = ox.k_shortest_paths(G, orig, dest, k=k_paths, weight='length')
                 
                 # Plotting the other shortest_routes other than the main shortest route
+                ind=0
                 for x in routes:
                     if (x!=route):
-                        route_map = ox.plot_route_folium(G, x,route_map=route_map,tiles=map_type,weight=2)
+                        route_map = ox.plot_route_folium(G, x,route_color=colors[ind],route_map=route_map,tiles=map_type,weight=2)
+                        ind=ind+1
 
                 # Putting a blue folium Marker on the source coordinates with proper tooltip
                 tooltip1 = "Source"
@@ -571,6 +576,4 @@ else:
 
 #***************************************** WEB-APPLICATION ENDS HERE  ************************************#
 
-        
-            
-      
+   
