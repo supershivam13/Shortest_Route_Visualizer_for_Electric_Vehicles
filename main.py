@@ -314,6 +314,7 @@ elif input_method=='Place Name':
                 route_map = ox.plot_route_folium(G, route,route_color='red',tiles=map_type,weight=5)
 
                 # Now, generating k number of shortest_path
+                k_paths = k_paths - 1
                 routes = ox.k_shortest_paths(G, orig, dest, k=k_paths, weight='length')
                 
                 # Plotting the other shortest_routes other than the main shortest route
