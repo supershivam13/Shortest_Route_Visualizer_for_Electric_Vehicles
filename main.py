@@ -491,7 +491,7 @@ else:
                 node_points2 = []
                 
                 # taking 50% of the node points to be charging stations only
-                node_points2=(np.random.permutation(node_points).tolist())[0:int(len(node_points)*0.5)]
+                node_points2=(np.random.permutation(node_points).tolist())[0:int(len(node_points)*0.3)]
 
                 # generating the random waiting time to the charging stations
                 node_waiting_times = np.random.permutation( np.arange(len(node_points))).tolist()
@@ -503,8 +503,6 @@ else:
                 for c in node_points2:
                     time_charge[c]=0
 
-                # printing the dictionary of node : waiting time
-                time_charge
 
                 # a variable having a very high value
                 min=1000000
@@ -521,7 +519,6 @@ else:
                     for b in z:
                         sum=sum+time_charge[b]
                     
-                    sum
                     if(sum<min):
                         shortest_route=z
                         min=sum
