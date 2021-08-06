@@ -15,16 +15,6 @@ import numpy as np
 import random
 import matplotlib.pyplot as plt
 
-# import os
-# import base64
-# import taxicab as tc
-# import matplotlib.pyplot as plt
-# import pandas as pd
-# import plotly.graph_objs as go
-# import numpy as np
-# from folium import IFrame
-
-
 
 #************************  MAIN WEB-APPLICATION STARTS HERE   ***********************************************#
 
