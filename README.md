@@ -6,7 +6,7 @@ Project Live Demo : https://bit.ly/3vTSaLD
 
 <h4> A Streamlit web-application which deals with the construction and plotting of shortest-routes
 for Electric vehicles (EVs) based on different aspects of the nature of
-roads such as walk,drive,bike,etc which is basically the network type of
+roads such as walk, drive, bike, etc. which is basically the network type of
 the graph used for finding shortest paths between two points. </h4>
 
 The term ‘shortest’ may have different meanings to different individuals.
