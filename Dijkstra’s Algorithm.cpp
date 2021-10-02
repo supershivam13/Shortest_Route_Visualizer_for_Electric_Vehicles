@@ -42,6 +42,7 @@
 
     #include <limits.h>
     #include <stdio.h>
+    #include <stdlib.h>
 
     // Number of vertices in the graph
     #define V 9
