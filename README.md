@@ -44,7 +44,7 @@ two points based on the travel time. </h4>
   - pip install streamlit
   - pip install scikit-learn
   - streamlit run main.py
-- Wait for few seconds, it will start running on your localhost
+- Wait for few seconds, it will start running on your local machine.
 
 ## Snapshots of App 📸
 
