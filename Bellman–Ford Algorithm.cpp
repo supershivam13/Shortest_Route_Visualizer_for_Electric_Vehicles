@@ -175,6 +175,4 @@
         graph->edge[7].weight = -3;
 
         BellmanFord(graph, 0);
-
-        return 0;
     }
