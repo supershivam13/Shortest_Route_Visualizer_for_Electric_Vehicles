@@ -20,7 +20,7 @@ Broadly speaking, Eco-routing is the identification of the most
 energy-efficient route for a vehicle to travel between two points and is
 offered as a way in which drivers can reduce fuel consumption and
 consequently reduce the carbon footprint of their journeys
-Similarly, some more cases are there and exist in the real world nature of the
+Similarly, many more cases exist in the real world nature of the
 roads and networks.
 
 <h4>
