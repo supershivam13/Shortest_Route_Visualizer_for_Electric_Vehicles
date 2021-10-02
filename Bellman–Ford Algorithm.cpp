@@ -42,6 +42,8 @@
     #include <bits/stdc++.h>
     #include <stdio.h>
     #include <stdlib.h>
+    
+    using namespace std;
 
 
     // a structure to represent a weighted edge in graph
