@@ -74,14 +74,14 @@ two points based on the travel time. </h4>
 * Still there are some features to complete as well as to implement, If you find this app intresting than hit me up; I will be
 glad to work with you.
 
-
+<!-- 
 ## Project Admin 👨🏻‍💻
 
 |                                                                                         <a href="https://shivamsahu.netlify.app/"><img src="https://github.com/supershivam13/Shortest_Route_Visualizer_for_Electric_Vehicles/blob/main/assets/shivam.png" width=150px height=160px /></a>                                                                                         |
 | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 |                                                                                                                                        **[Shivam Sahu](https://shivamsahu.netlify.app/)**                                                                                                                                        |
 | <a href="https://www.instagram.com/superb_shivam13/"><img src="https://user-images.githubusercontent.com/56252259/114969025-24d22680-9e95-11eb-848d-b20e73269c4c.png" width="32px" height="32px"></a> <a href="https://twitter.com/ShivamS87093943"><img src="https://user-images.githubusercontent.com/56252259/114967867-d6bc2380-9e92-11eb-8f89-c437f39a45de.png" width="32px" height="32px"></a>  <a href="https://www.linkedin.com/in/shivam-sahu-503/"><img src="https://user-images.githubusercontent.com/56252259/114967871-d7ed5080-9e92-11eb-8781-cd7cf9bb52db.png" width="32px" height="32px"></a> |
-
+ -->
 
 ## ⭐ Issues:
 For major changes, you are welcome to open an issue to discuss what you would like to change. Enhancements will be appreciated.
