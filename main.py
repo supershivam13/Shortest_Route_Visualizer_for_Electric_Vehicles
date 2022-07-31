@@ -240,7 +240,7 @@ elif input_method=='Place Name':
             url = 'https://maps.googleapis.com/maps/api/geocode/json?'
 
             # enter your api key here ( already generated one from Google Cloud Platform )
-            api_key='AIzaSyAp8R3vAnA4QqvfAQizQ-UwI8h7NgJ8-sw'
+            api_key='AIzaSyCzxwd5wNZIL1PSFciGmZdlzK5o4h_0al8'
 
             # get method of requests module returns response object
             # API Call to get the response json for the source
